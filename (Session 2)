@@ -1,0 +1,27 @@
+%% Image Denoising Tutorial - MATLAB
+% Session 2 
+% Author: Mahmod Kamal
+
+clc; clear; close all;
+
+% Gaussian filter
+gauss_filter = fspecial('gaussian', [5 5], 1);
+den_gauss = imfilter(noisy_gauss, gauss_filter);
+
+% Wiener filter
+den_wiener = wiener2(noisy_gauss, [5 5]);
+
+% Wavelet denoising
+den_wavelet = wdenoise(double(noisy_gauss), 2);
+
+figure;
+subplot(1,3,1); imshow(den_gauss, []); title('Gaussian Filter');
+subplot(1,3,2); imshow(den_wiener, []); title('Wiener Filter');
+subplot(1,3,3); imshow(uint8(den_wavelet)); title('Wavelet Denoising');
+
+%% Evaluation Metrics
+% PSNR and SSIM
+psnr_gauss = psnr(den_gauss, img);
+ssim_gauss = ssim(den_gauss, img);
+
+fprintf('Gaussian Filter -> PSNR: %.2f, SSIM: %.3f\n', psnr_gauss, ssim_gauss);
