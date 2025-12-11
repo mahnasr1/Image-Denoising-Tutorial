@@ -1,0 +1,24 @@
+%% Simple Filters (Session 1)
+clc; clear; close all;
+
+
+img = imread('cameraman.tif'); % placeholder
+figure; imshow(img); title('Original Image');
+
+%% Add Noise
+noisy_gauss = imnoise(img, 'gaussian', 0, 0.01);
+noisy_sp = imnoise(img, 'salt & pepper', 0.02);
+
+figure;
+subplot(1,2,1); imshow(noisy_gauss); title('Gaussian Noise');
+subplot(1,2,2); imshow(noisy_sp); title('Salt & Pepper Noise');
+
+
+mean_filter = fspecial('average', [3 3]);
+den_mean = imfilter(noisy_gauss, mean_filter);
+
+den_median = medfilt2(noisy_sp, [3 3]);
+
+figure;
+subplot(1,2,1); imshow(den_mean); title('Mean Filter');
+subplot(1,2,2); imshow(den_median); title('Median Filter');
