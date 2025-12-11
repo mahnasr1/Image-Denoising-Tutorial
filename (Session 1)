@@ -1,4 +1,7 @@
-%% Simple Filters (Session 1)
+%% Image Denoising Tutorial - MATLAB
+% Session 1 
+% Author: Mahmod Kamal
+
 clc; clear; close all;
 
 
