@@ -5,7 +5,7 @@
 clc; clear; close all;
 
 
-img = imread('cameraman.tif'); % placeholder
+img = imread('image.png'); % placeholder
 figure; imshow(img); title('Original Image');
 
 %% Add Noise
