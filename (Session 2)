@@ -4,6 +4,13 @@
 
 clc; clear; close all;
 
+img = imread('image.png'); % placeholder
+figure; imshow(img); title('Original Image');
+
+%% Add Noise
+noisy_gauss = imnoise(img, 'gaussian', 0, 0.01);
+noisy_sp = imnoise(img, 'salt & pepper', 0.02);
+
 % Gaussian filter
 gauss_filter = fspecial('gaussian', [5 5], 1);
 den_gauss = imfilter(noisy_gauss, gauss_filter);
